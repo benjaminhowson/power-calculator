@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Header and Imports -->
+<meta charset="UTF-8">
+<meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+
+<link rel = "stylesheet" href = "index.css">
+<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<title> Power Calculator </title>
+</head>
+
+<body class = "theme">
+
+<div class = "header-container">
+  <!-- Title and Description -->
+  <span style = "font-size: 22px; font-weight: bold;"> Power Calculator </span>
+  <div class = "content-container">
+    <p style = "padding-bottom: 10px;">
+      How many samples I you need? What is the smallest effect I can detect?
+      What power do I get with this design? The Z-Test power function allows 
+      you to answer all of these questions. Just tweak the inputs until you 
+      are happy with your experimental design. The price of this flexibility 
+      is that you will need a bit of trial and error to land on the exact 
+      numbers you want.
+    </p>
+  </div>
+
+  <!-- Power Calculator --> 
+  <div class = "calculator-container">
+    <span style = "font-size: 16px; font-weight: bold; padding-bottom: 20px;"> 
+      <i class = "fa-solid fa-sliders" style = "padding-right: 5px; color: #3EB489;"></i> 
+      Test Settings
+    </span>
+    <div class = "field" style = "padding-top: 20px;">
+      <label> Alternative Hypothesis </label>
+
+      <select id = "H1">
+        <option value = "!="> Any Change (≠) </option>
+        <option value = "<"> Degradation (<) </option>
+        <option value = ">"> Improvement (>) </option>
+      </select>
+    </div>
+    
+    <div class = "field">
+      <label> Minimum Detectable Effect </label>
+      <input id = "delta" type = "number">
+    </div>
+
+    <div class = "field" style = "padding-bottom: 20px;">
+      <label> Significance Level </label>
+      <input id = "alpha" type = "number">
+    </div>
+
+    <span style = "font-size: 16px; font-weight: bold; padding-bottom: 20px;">       
+      <i class = "fa-solid fa-flask" style = "padding-right: 5px; color: #3EB489;"></i>
+      Inputs for Treatment 1
+    </span>
+    <div class = "field" style = "padding-top: 10px;">
+      <label> Variance </label>
+      <input id = "V1" type = "number">
+    </div>
+
+    <div class = "field" style = "padding-bottom: 20px;">
+      <label> Number of Samples </label>
+      <input id = "N1" type = "number">
+    </div>
+
+    <span style = "font-size: 16px; font-weight: bold; padding-bottom: 20px;">  
+      <i class = "fa-solid fa-flask" style = "padding-right: 5px; color: #3EB489;"></i>
+      Inputs for Treatment 2
+    </span>
+    <div class = "field" style = "padding-top: 10px;">
+      <label> Variance </label>
+      <input id = "V2" type = "number">
+    </div>
+
+    <div class = "field">
+      <label> Number of Samples </label>
+      <input id = "N2" type = "number">
+    </div>
+
+    <button class = "calculate-button" id = "submit"> Submit </button> 
+  </div>
+
+  <div class = "output-container">
+    <span style = "font-size: 16px; font-weight: bold; padding-bottom: 20px;"> 
+      <i class = "fa-solid fa-calculator" style = "padding-right: 5px; color: #3EB489;"></i>
+      Calculated Results
+    </span>
+    <p id = "output-threshold"> Rejection Threshold: </p>
+    <p id = "output-power"> Statistical Power: </p>
+  </div>
+
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+  <script src = "main.js"></script>
+  <script src = "index.js"></script>
+
+  <!-- Footnotes -->
+  <div class = "content-container">
+    <span style = "font-size: 18px; font-weight: bold;"> Footnotes </span>
+    <p style = "padding-bottom: 10px;">
+      The Z-Test is the main focus of this calculator because of its wide-spread
+      usage in online controlled experiments. These applications use this hypothesis
+      test because their sample sizes are so massive that the central limit theorem 
+      gives reasonable approximations.
+
+      Existing tools on the internet use the power function behind the scenes. 
+      They eliminate the trial and error by running an efficient
+      optimisation algorithm on the quantity you want to find. 
+      Bisection will do this job very quickly. 
+      However, I thought it would be interesting to do something a little different. 
+    </p>
+  </div>
+</div>
+
+
+
+</body>
+</html>
